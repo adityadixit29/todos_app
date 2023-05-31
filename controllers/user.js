@@ -23,7 +23,7 @@ export const login = async (req,res,next)=>{
         });
     }
 
-    sendCookie(user,res,`welcome back, ${user.name}`,200);
+    sendCookie(user,res,`Welcome Back :), ${user.name}`,200);
    } catch (error) {
     next(error)
    }
