@@ -23,7 +23,7 @@ app.use("/api/v1/users", userRouter)
 app.use("/api/v1/task", taskRouter)
 
 //using error middleware
-app.use(errorMiddleware);
+// app.use(errorMiddleware);
 
 app.get('/',(req,res)=>{
     res.send("running")
