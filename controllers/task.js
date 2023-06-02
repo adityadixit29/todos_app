@@ -1,6 +1,6 @@
 import ErrorHandler from "../middleware/error.js";
 import { Task } from "../models/task.js"
-import { User } from "../models/user.js";
+
 export const newTask = async (req, res, next) => {
     try {
         const { title, description } = req.body;
@@ -9,11 +9,11 @@ export const newTask = async (req, res, next) => {
             title,
             description,
             user: req.user
-        })
+        });
         res.status(201).json({
             success: true,
             message: "Task added successfully",
-        })
+        });
     } catch (error) {
         next(error);
     }
@@ -25,18 +25,17 @@ export const getMyTask = async (req, res, next) => {
         const userid = req.user._id;
         console.log(userid);
 
-        const tasks = await Task.find({ user: userid })
-
-        res.status(201).json({
+        const tasks = await Task.find({ user: userid });
+        console.log(tasks);
+        res.status(200).json({
             success: true,
-            message: "Success",
             tasks,
-        })
+        });
     } catch (error) {
-        next(error)
+        next(error);
     }
 
-}
+};
 export const updateTask = async (req, res, next) => {
 
     try {
